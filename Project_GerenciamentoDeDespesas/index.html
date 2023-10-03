@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleMain.css">
+    <link rel="stylesheet" href="StartStyle.css">
+    <link rel="stylesheet" href="styleNovaTransicao.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="divAdicionar" id="divAdicionar">
+        <h2>Nova transição</h2>
+        <label for="">nome da transição</label>
+        <input type="text" id="nomeTransicaoADD">
+
+        <label for="">data de vencimento</label>
+        <input type="text" id="dataTransicaoADD">
+
+        <label for="">status da transição</label>
+        <select name="transicaoStatus" id="statusTransicaoADD">
+            <option value="receita">Receita</option>
+            <option value="despesa">Despesa</option>
+        </select>
+
+        <label for="">valor da transição</label>
+        <input type="text" id="valorTransicaoADD">
+
+        <button id="btnAdicionar" onclick="btnAdicionarTransicaoNova()">Adicionar</button>
+    </div>
+
+    <main id="main">
+        <section class="sessao1">
+            <h1>Transiçao</h1>
+           <div class="areaTransicao">
+                <div class="despesas">
+                    <h2><strong>Despesas</strong></h2>
+                    <p><span id="exibirDispesa">R$0,00</span></p>
+                </div>
+                <div class="receita">
+                    <h2><STrong>Receita</STrong></h2>
+                    <p><span id="exibirRceita">R$0,00</span></p>
+                </div>
+           </div>
+           <div id = "statusTransicao" class="statusTransicao"> 
+               
+           </div>
+        </section>
+
+        <section class="sessao2">
+
+            <h2>Saldo atual</h2>
+            <p><span>R$: 0,00</span></p>
+            <h2>Fundo de reserva</h2>
+            <p><span>R$: 0,00</span></p>
+
+            <button id="btnAdicionar" onclick="exibirTelaADDTransicao()">Adicionar nova transição</button><br>
+            <button>Adicionar Saldo</button><br>
+            <button>adicionar Valor no fundo de reserva</button>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script src=""></script>
+</body>
+</html>

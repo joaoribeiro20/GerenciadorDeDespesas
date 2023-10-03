@@ -1,0 +1,45 @@
+.sessao1{
+    color: white;
+    padding: 5%;
+    width: 70%;
+}
+.areaTransicao{
+    display: flex;
+    justify-content: space-between;
+}
+.statusTransicao{
+    display: flex;
+  
+    flex-direction: column;
+    overflow-y: auto;
+    height: 50vh;
+}
+.statusTransicao::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  .statusTransicao::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0);        /* color of the tracking area */
+  }
+.trasicaoRealizadasR{
+    padding: 2%;
+    background-color: aliceblue;
+    color: black;
+    border: solid rgb(6, 255, 27);
+    border-radius: 20px ;
+     margin-top: 2vh;
+}
+.trasicaoRealizadasD{
+    padding: 2%;
+    background-color: aliceblue;
+    color: black;
+    border: solid rgb(255, 0, 0);
+    border-radius: 20px ;
+    margin-top: 2vh;
+}
+
+.sessao2{
+    color: white;
+    padding: 5%;
+    width: 30%;
+}
