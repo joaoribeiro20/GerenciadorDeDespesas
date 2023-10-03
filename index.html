@@ -11,20 +11,22 @@
 <body>
     <div class="divAdicionar" id="divAdicionar">
         <h2>Nova transição</h2>
+        <p>Caso a trasição for do tipo Receita não informe nenhuma dado no campo data de vencimento</p>
         <label for="">nome da transição</label>
-        <input type="text" id="nomeTransicaoADD">
+        <input type="text" id="nomeTransicaoADD" placeholder="Joao">
 
         <label for="">data de vencimento</label>
-        <input type="text" id="dataTransicaoADD">
+        <input type="text" id="dataTransicaoADD" placeholder="05">
 
         <label for="">status da transição</label>
         <select name="transicaoStatus" id="statusTransicaoADD">
-            <option value="receita">Receita</option>
             <option value="despesa">Despesa</option>
+            <option value="receita">Receita</option>
+            
         </select>
 
         <label for="">valor da transição</label>
-        <input type="text" id="valorTransicaoADD">
+        <input type="text" id="valorTransicaoADD" placeholder="348">
 
         <button id="btnAdicionar" onclick="btnAdicionarTransicaoNova()">Adicionar</button>
     </div>

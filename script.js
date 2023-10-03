@@ -32,7 +32,6 @@ let valorTotalReceita = 0
 divAdicionar.style.display = 'none'
 
 function exibirTelaADDTransicao() {
-    console.log(`${divTransição}`)
     areaMain.style.display = 'none'
     divAdicionar.style.display = 'flex'
 }
@@ -84,36 +83,41 @@ function btnAdicionarTransicaoNova() {
         i = i + 1
     
 
-    }
-}else{
-    alert('validacao == false')
-}
-
     addTransicaoNome.value=''
     addTransicaoData.value='';
     addTransicaoValor.value='';
+    }
+}else{
+    alert('Erro nos Campos de informações')
+}
+
 
    
 }
 
 function validacaoForms(){
     
-    /* const regexNome = /\w{3}/ig
-    if(regexNome.test(addTransicaoNome.value)){
-        return true
-    }else{
-        return false
-    } */
+    const regexData = /^\d|\d+\d$/ig
+    const regexValor = /^\d+$/ig
+    const regexNome = /\w{3}/ig
+    
 
-    const regexData = /^\d|\d+\d$/g
-    /* try { */
-    if(regexData.test(addTransicaoData.value)){
-        return true
-    }else{
+    if(!regexNome.test(addTransicaoNome.value)){
         return false
     }
-   /*  } catch (error) {
-        alert("Compo Data Invalido")
-    } */
+    if(!regexValor.test(addTransicaoValor.value)){
+        return false
+    }
+    
+    if(addTransicaoStatus.value === 'despesa'){
+        if(!regexData.test(addTransicaoData.value)){
+        return false
+        }
+    }else{
+        if(addTransicaoData.value != ''){
+            return false
+            }
+    }
+    return true
  
-}
+}  
