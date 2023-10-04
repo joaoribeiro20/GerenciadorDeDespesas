@@ -1,4 +1,5 @@
 let areaMain = document.getElementById('main')
+let sessao2 = document.getElementById('sessao2')
 let divAdicionar = document.getElementById('divAdicionar')
 let areaDeTransicaoDinamica = document.getElementById('statusTransicao')
 
@@ -120,4 +121,18 @@ function validacaoForms(){
     }
     return true
  
-}  
+} 
+let inputAdicionarValor = document.getElementById('inputAdicionarValor')
+let valorTotal = document.getElementById('valorTotal')
+let inputValorTotal = document.getElementById('inputValorTotal')
+let btnSaldoADD = document.getElementById('btnSaldo')
+function adicionarValor(){
+    inputAdicionarValor.style.display = 'flex'
+    console.log('entrou dentro da função')
+
+}
+function salvarValor(){
+    valorTotal.innerText = inputValorTotal.value
+    inputAdicionarValor.style.display = 'none'
+    sessao2.removeChild(btnSaldoADD)
+}

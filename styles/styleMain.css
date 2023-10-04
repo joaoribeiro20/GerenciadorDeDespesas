@@ -1,5 +1,5 @@
 .sessao1{
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 5%;
     width: 70%;
 }
@@ -12,7 +12,7 @@
   
     flex-direction: column;
     overflow-y: auto;
-    height: 50vh;
+    height: 30vh;
 }
 .statusTransicao::-webkit-scrollbar {
     width: 12px;               /* width of the entire scrollbar */
@@ -39,7 +39,31 @@
 }
 
 .sessao2{
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 5%;
     width: 30%;
+    margin-top: 8vh;
+}
+.btns{
+    border-radius: 10px;
+    border: 0vh;
+   
+}
+.btns:hover{
+    background-color: rgb(164, 44, 0);
+    color: rgb(255, 255, 255);
+    
+    
+}
+
+/* adicionar valor */
+
+.inputAdicionarValor{
+display: none;
+}
+
+/* informaçoes sobre a receita e despesas */
+.divinfoRD{
+ 
+    
 }

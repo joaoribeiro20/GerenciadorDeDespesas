@@ -1,7 +1,8 @@
 .divAdicionar{
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-top: 5%;
+    justify-content: space-between;
     flex-direction: column;
     margin: 10%;
     background-color: rgb(56, 56, 56);

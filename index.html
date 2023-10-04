@@ -3,37 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleMain.css">
-    <link rel="stylesheet" href="StartStyle.css">
-    <link rel="stylesheet" href="styleNovaTransicao.css">
+    <link rel="stylesheet" href="styles/StartStyle.css">
+    <link rel="stylesheet" href="styles/styleMain.css">
+    <link rel="stylesheet" href="styles/styleNovaTransicao.css">
     <title>Document</title>
 </head>
 <body>
+    
     <div class="divAdicionar" id="divAdicionar">
         <h2>Nova transição</h2>
-        <p>Caso a trasição for do tipo Receita não informe nenhuma dado no campo data de vencimento</p>
-        <label for="">nome da transição</label>
-        <input type="text" id="nomeTransicaoADD" placeholder="Joao">
-
-        <label for="">data de vencimento</label>
-        <input type="text" id="dataTransicaoADD" placeholder="05">
-
+        
+        
         <label for="">status da transição</label>
         <select name="transicaoStatus" id="statusTransicaoADD">
             <option value="despesa">Despesa</option>
             <option value="receita">Receita</option>
-            
-        </select>
+        </select><br>
+        <label for="">nome da transição</label>
+        <input type="text" id="nomeTransicaoADD" placeholder="Joao"><br>
+
+        <label for="">data de vencimento</label>
+        <input type="text" id="dataTransicaoADD" placeholder="05"><br>
 
         <label for="">valor da transição</label>
-        <input type="text" id="valorTransicaoADD" placeholder="348">
+        <input type="text" id="valorTransicaoADD" placeholder="348"><br>
 
         <button id="btnAdicionar" onclick="btnAdicionarTransicaoNova()">Adicionar</button>
     </div>
 
     <main id="main">
-        <section class="sessao1">
-            <h1>Transiçao</h1>
+       
+        <section class="sessao1"> 
+        <div>
+            <h1>Bem Vindo ao Sistema de controle de dispesas!!</h1>
+            <p>Este sistema foi desenvolvido especificamente para você. Ele permite que você gerencie suas despesas do mês de uma maneira muito simplificada. Portanto, para começar, é necessário adicionar um saldo que você possui no mês e, em seguida, adicionar suas despesas ou receitas.</p>
+        </div>
+        <hr>
+            <h1>Transações</h1> 
+            <button class="btns" id="btnAdicionar" onclick="exibirTelaADDTransicao()">Adicionar nova transição</button>   
            <div class="areaTransicao">
                 <div class="despesas">
                     <h2><strong>Despesas</strong></h2>
@@ -49,17 +56,36 @@
            </div>
         </section>
 
-        <section class="sessao2">
+        <section id="sessao2" class="sessao2">
 
-            <h2>Saldo atual</h2>
-            <p><span>R$: 0,00</span></p>
+            <h2>Saldo atual </h2>
+            <p>R$:<span id="valorTotal"> 0,00</span></p>
+            <button onclick="adicionarValor()" class="btns" id="btnSaldo">Adicionar Saldo</button>
+             <br>
+            <div id="inputAdicionarValor" class="inputAdicionarValor" >
+               <input type="text" id="inputValorTotal">
+               <br>
+               
+                <button onclick="salvarValor()">Salvar</button>
+            </div>
             <h2>Fundo de reserva</h2>
             <p><span>R$: 0,00</span></p>
 
-            <button id="btnAdicionar" onclick="exibirTelaADDTransicao()">Adicionar nova transição</button><br>
-            <button>Adicionar Saldo</button><br>
-            <button>adicionar Valor no fundo de reserva</button>
+             
+            
+            <button class="btns" id="btnFundo">adicionar Valor no fundo de reserva</button><br>
+
+            <div class="divinfoRD">
+                
+                <p><strong>O que é a receita?</strong> A receita é aquele valor extra que obtemos no mês. Portanto, quando adicionamos um valor à receita, esse valor é acrescentado ao valor atual que temos.
+                </p>
+            </div>
+            <div>
+               
+                <p><strong>O que é a despesa?</strong> A despesa é tudo aquilo que gastamos no mês. Portanto, o valor dessas despesas vai sendo descontado no valor anual toda vez que é adicionada uma despesa nova.</p>
+            </div>
         </section>
+    
 
     </main>
 
