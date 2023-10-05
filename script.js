@@ -70,7 +70,7 @@ function exibirTelaADDTransicao() {
             }
         }, 500);
     } else {
-        alert('adicione um valor inicial na area valor total')
+        alert('adicione um valor inicial na area Saldo atual')
     }
 
 }
