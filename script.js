@@ -4,13 +4,23 @@ let divAdicionar = document.getElementById('divAdicionar')
 let areaDeTransicaoDinamica = document.getElementById('statusTransicao')
 
 let addTransicaoNome = document.getElementById('nomeTransicaoADD')
+let addTransicaoNomeR = document.getElementById('nomeTransicaoADDR')
 let addTransicaoData = document.getElementById('dataTransicaoADD')
 let addTransicaoStatus = document.getElementById('statusTransicaoADD')
 let addTransicaoValor = document.getElementById('valorTransicaoADD')
+let addTransicaoValorR = document.getElementById('valorTransicaoADDR')
+let divAdicionarDespesas = document.getElementById('divAdicionarDespesas')
+let divAdicionarReceita = document.getElementById('divAdicionarReceita')
 
 let exibirDispesa = document.getElementById('exibirDispesa')
 let exibirRceita = document.getElementById('exibirRceita')
 
+
+
+let inputAdicionarValor = document.getElementById('inputAdicionarValor')
+let valorTotalT = document.getElementById('valorTotalT')
+let inputValorTotal = document.getElementById('inputValorTotal')
+let btnSaldoADD = document.getElementById('btnSaldo')
 /* 
 <div class="trasicaoRealizadas">
         <span>boleto tim</span>
@@ -25,114 +35,205 @@ let spanNome = []
 let spanData = []
 let spanStatus = []
 let spanValor = []
-const trasicoes = []
+const trasicoesD = []
+const trasicoesR = []
 let i = 0
-
+let j = 0
+let teste = false
 let valorTotalDespesas = 0
 let valorTotalReceita = 0
+let campoTxtVReceita
+let campoTxtVDespesa
+let valorTotalExibir
 divAdicionar.style.display = 'none'
 
 function exibirTelaADDTransicao() {
-    areaMain.style.display = 'none'
-    divAdicionar.style.display = 'flex'
+    console.log(teste)
+    
+    if (teste == true) {
+        areaMain.style.display = 'none'
+        divAdicionar.style.display = 'flex'
+
+        const myTimeout = setTimeout(function () {
+
+            if (addTransicaoStatus.value == 'receita') {
+                divAdicionarReceita.style.display = 'flex'
+                console.log('entrou no settimeout e foi para receita')
+            } else {
+                divAdicionarDespesas.style.display = 'flex'
+                console.log('entrou no settimeout e foi para despesa')
+            }
+        }, 3000);
+    } else {
+        alert('adicione um valor inicial na area valor total')
+    }
+
 }
 function btnAdicionarTransicaoNova() {
-    console.log(validacaoForms())
-    if(validacaoForms() == true){
-
     
-    trasicoes.push({
-        nome: addTransicaoNome.value,
-        data: addTransicaoData.value,
-        statusT: addTransicaoStatus.value,
-        valor: addTransicaoValor.value
-    })
+    console.log(addTransicaoStatus.value)
 
-    console.log(trasicoes)
-    areaMain.style.display = 'flex'
-    divAdicionar.style.display = 'none'
+    if (addTransicaoStatus.value == 'receita') {
+        receita()
+        console.log(campoTxtVReceita)
+    } else {
+        despesa()
+        console.log(campoTxtVDespesa)
+    }
+    if (campoTxtVReceita == 1 || campoTxtVDespesa == 1) {
+        areaMain.style.display = 'flex'
+        divAdicionar.style.display = 'none'
 
-    if (trasicoes.length >= i) {
-        console.log(i)
-        divTransição[i] = document.createElement('div')
-        spanNome[i] = document.createElement('span')
-        spanData[i] = document.createElement('span')
-        spanStatus[i] = document.createElement('span')
-        spanValor[i] = document.createElement('span')
-        if(trasicoes[i].statusT === 'receita'){
-            divTransição[i].setAttribute('class', 'trasicaoRealizadasR')
-            valorTotalReceita = valorTotalReceita + parseFloat(trasicoes[i].valor)
+        addTransicaoNome.value = ''
+        addTransicaoData.value = '';
+        addTransicaoValor.value = '';
+
+        divAdicionarReceita.style.display = 'none'
+        divAdicionarDespesas.style.display = 'none'
+        campoTxtVDespesa = 0
+        campoTxtVReceita =0
+    }else{
+        alert('Campo de informação invalido')
+    }
+}
+/* receita */
+function receita() {
+    console.log('FUNÇÃO RECEITA')
+
+    if (validarReceita() == true) {
+        trasicoesR.push({
+            nome: addTransicaoNomeR.value,
+            statusT: addTransicaoStatus.value,
+            valor: addTransicaoValorR.value
+        })
+
+        if (trasicoesR.length >= j) {
+            console.log(i)
+            divTransição[j] = document.createElement('div')
+            spanNome[j] = document.createElement('span')
+            spanStatus[j] = document.createElement('span')
+            spanValor[j] = document.createElement('span')
+
+            divTransição[j].setAttribute('class', 'trasicaoRealizadasR')
+            valorTotalReceita = valorTotalReceita + parseFloat(trasicoesR[j].valor)
             console.log(valorTotalReceita)
             exibirRceita.innerText = `R$ ${valorTotalReceita}`
-        }else{
+            console.log(valorTotalT.value)
+            valorTotalT.innerText = parseFloat(valorTotalExibir) + parseFloat(valorTotalReceita)
+            valorTotalExibir=parseFloat(valorTotalExibir) + parseFloat(valorTotalReceita)
+
+            spanNome[j].innerHTML = `<span class="testeInput">Nome:</span> ${trasicoesR[j].nome} `
+            spanStatus[j].innerHTML = `<span class="testeInput">Status:</span> ${trasicoesR[j].statusT} `
+            spanValor[j].innerHTML = `<span class="testeInput">Valor:</span> R$${trasicoesR[j].valor} `
+
+            divTransição[j].appendChild(spanNome[j])
+            divTransição[j].appendChild(spanStatus[j])
+            divTransição[j].appendChild(spanValor[j])
+            areaDeTransicaoDinamica.appendChild(divTransição[j])
+            j = j + 1
+            campoTxtVReceita = 1
+        }
+    } else {
+        campoTxtVReceita = 2
+    }
+}
+/* despesa */
+function despesa() {
+    
+
+    if (validacaoDespesa() == true) {
+        console.log('FUNÇÃO DESPESA validaçao')
+        trasicoesD.push({
+            nome: addTransicaoNome.value,
+            data: addTransicaoData.value,
+            statusT: addTransicaoStatus.value,
+            valor: addTransicaoValor.value
+        })
+
+        if (trasicoesD.length >= i) {
+            console.log('FUNÇÃO DESPESA criaçao')
+            console.log(i)
+            divTransição[i] = document.createElement('div')
+            spanNome[i] = document.createElement('span')
+            spanData[i] = document.createElement('span')
+            spanStatus[i] = document.createElement('span')
+            spanValor[i] = document.createElement('span')
+ 
+            
+
             divTransição[i].setAttribute('class', 'trasicaoRealizadasD')
-            valorTotalDespesas = valorTotalDespesas + parseFloat(trasicoes[i].valor)
+            valorTotalDespesas = valorTotalDespesas + parseFloat(trasicoesD[i].valor)
             console.log(valorTotalDespesas)
             exibirDispesa.innerText = `R$ ${valorTotalDespesas}`
+            valorTotalT.innerText = parseFloat(valorTotalExibir) - parseFloat(trasicoesD[i].valor)
+
+
+
+            spanNome[i].innerHTML = `<span class="testeInput">Nome:</span> ${trasicoesD[i].nome} `
+            spanData[i].innerHTML = `<span class="testeInput">Data De Vencimento:</span>  ${trasicoesD[i].data} `
+            spanStatus[i].innerHTML = `<span class="testeInput">Status:</span> ${trasicoesD[i].statusT} `
+            spanValor[i].innerHTML = `<span class="testeInput">Valor:</span> R$${trasicoesD[i].valor} `
+
+            divTransição[i].appendChild(spanNome[i])
+            divTransição[i].appendChild(spanData[i])
+            divTransição[i].appendChild(spanStatus[i])
+            divTransição[i].appendChild(spanValor[i])
+            areaDeTransicaoDinamica.appendChild(divTransição[i])
+            i = i + 1
+            campoTxtVDespesa = 1
         }
-        
-        spanNome[i].innerText = `Nome: ${trasicoes[i].nome} `
-        spanData[i].innerText = `Data De Vencimento: ${trasicoes[i].data} `
-        spanStatus[i].innerText = `Status: ${trasicoes[i].statusT} `
-        spanValor[i].innerText = `Valor: R$${trasicoes[i].valor} `
-
-        divTransição[i].appendChild(spanNome[i])
-        divTransição[i].appendChild(spanData[i])
-        divTransição[i].appendChild(spanStatus[i])
-        divTransição[i].appendChild(spanValor[i])
-        areaDeTransicaoDinamica.appendChild(divTransição[i])
-        i = i + 1
-    
-
-    addTransicaoNome.value=''
-    addTransicaoData.value='';
-    addTransicaoValor.value='';
+    } else {
+        campoTxtVDespesa = 2
     }
-}else{
-    alert('Erro nos Campos de informações')
 }
+/* validação  */
+function validacaoDespesa() {
+  
+        const regexData = /^\d|\d+\d$/ig
+        const regexValor = /^\d+$/ig
+        const regexNome = /\w{3}/ig
+        if (!regexNome.test(addTransicaoNome.value)) {
+            return false
+        }
+        if (!regexValor.test(addTransicaoValor.value)) {
+            return false
+        }
 
-
+        
+            if (!regexData.test(addTransicaoData.value)) {
+                return false
+            }
+        
+        
+        return true
    
-}
 
-function validacaoForms(){
-    
-    const regexData = /^\d|\d+\d$/ig
+}
+function validarReceita(){
     const regexValor = /^\d+$/ig
     const regexNome = /\w{3}/ig
-    
-
-    if(!regexNome.test(addTransicaoNome.value)){
+    if (!regexNome.test(addTransicaoNomeR.value)) {
         return false
     }
-    if(!regexValor.test(addTransicaoValor.value)){
+    if (!regexValor.test(addTransicaoValorR.value)) {
         return false
-    }
-    
-    if(addTransicaoStatus.value === 'despesa'){
-        if(!regexData.test(addTransicaoData.value)){
-        return false
-        }
-    }else{
-        if(addTransicaoData.value != ''){
-            return false
-            }
     }
     return true
- 
-} 
-let inputAdicionarValor = document.getElementById('inputAdicionarValor')
-let valorTotal = document.getElementById('valorTotal')
-let inputValorTotal = document.getElementById('inputValorTotal')
-let btnSaldoADD = document.getElementById('btnSaldo')
+}
+
+
 function adicionarValor(){
     inputAdicionarValor.style.display = 'flex'
     console.log('entrou dentro da função')
 
 }
 function salvarValor(){
-    valorTotal.innerText = inputValorTotal.value
+    valorTotalExibir = inputValorTotal.value
+    valorTotalT.innerText = valorTotalExibir
+    
     inputAdicionarValor.style.display = 'none'
     sessao2.removeChild(btnSaldoADD)
+    teste = true
+    console.log(valorTotalT)
+    console.log(valorTotalExibir)
 }

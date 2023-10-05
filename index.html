@@ -13,22 +13,36 @@
     <div class="divAdicionar" id="divAdicionar">
         <h2>Nova transição</h2>
         
-        
         <label for="">status da transição</label>
         <select name="transicaoStatus" id="statusTransicaoADD">
             <option value="despesa">Despesa</option>
             <option value="receita">Receita</option>
         </select><br>
-        <label for="">nome da transição</label>
-        <input type="text" id="nomeTransicaoADD" placeholder="Joao"><br>
+
+        <!-- div responsavel pela despesa -->
+        <div class="divAdicionarDespesas" id="divAdicionarDespesas">
+            <label for="">nome da transição</label>
+        <input type="text" id="nomeTransicaoADD" placeholder="Conta de Agua"><br>
 
         <label for="">data de vencimento</label>
         <input type="text" id="dataTransicaoADD" placeholder="05"><br>
 
         <label for="">valor da transição</label>
         <input type="text" id="valorTransicaoADD" placeholder="348"><br>
-
         <button id="btnAdicionar" onclick="btnAdicionarTransicaoNova()">Adicionar</button>
+        </div>
+        
+        <!-- div responsavel pela receita -->
+        <div class="divAdicionarReceita" id="divAdicionarReceita">
+        <label for="">nome da transição</label>
+        <input type="text" id="nomeTransicaoADDR" placeholder="Conta de Agua"><br>
+
+            <label for="">valor da transição</label>
+            <input type="text" id="valorTransicaoADDR" placeholder="348"><br>
+    
+            <button id="btnAdicionar" onclick="btnAdicionarTransicaoNova()">Adicionar</button>
+        </div>
+        
     </div>
 
     <main id="main">
@@ -59,21 +73,22 @@
         <section id="sessao2" class="sessao2">
 
             <h2>Saldo atual </h2>
-            <p>R$:<span id="valorTotal"> 0,00</span></p>
+            <span id="valorTotalT">00</span>
             <button onclick="adicionarValor()" class="btns" id="btnSaldo">Adicionar Saldo</button>
-             <br>
-            <div id="inputAdicionarValor" class="inputAdicionarValor" >
-               <input type="text" id="inputValorTotal">
-               <br>
-               
+            <br>
+
+            <div id="inputAdicionarValor" class="inputAdicionarValor">
+                <br>
+                <input type="text" id="inputValorTotal" class="inputValor">
                 <button onclick="salvarValor()">Salvar</button>
+              
             </div>
             <h2>Fundo de reserva</h2>
             <p><span>R$: 0,00</span></p>
 
              
             
-            <button class="btns" id="btnFundo">adicionar Valor no fundo de reserva</button><br>
+            <button class="btns" id="btnFundo">adicionar Valor</button><br>
 
             <div class="divinfoRD">
                 
@@ -90,6 +105,6 @@
     </main>
 
     <script src="script.js"></script>
-    <script src=""></script>
+    
 </body>
 </html>

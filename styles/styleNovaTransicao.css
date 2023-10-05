@@ -10,3 +10,17 @@
     padding: 2%;
     color: white;
 }
+.divAdicionarDespesas{
+display: none;
+align-items: center;
+   
+    justify-content: space-between;
+    flex-direction: column;
+}
+.divAdicionarReceita{
+    display: none;
+    align-items: center;
+    
+    justify-content: space-between;
+    flex-direction: column;
+}
