@@ -122,7 +122,7 @@ function receita() {
             divTransição[j].setAttribute('class', 'trasicaoRealizadasR')
             valorTotalReceita = valorTotalReceita + parseFloat(trasicoesR[j].valor)
             console.log(valorTotalReceita)
-            exibirRceita.innerText = `R$ ${valorTotalReceita}`
+            exibirRceita.innerText = `R$ +${valorTotalReceita}`
             console.log(valorTotalT.value)
             valorTotalT.innerText = parseFloat(valorTotalExibir) + parseFloat(trasicoesR[j].valor)
             valorTotalExibir = parseFloat(valorTotalExibir) + parseFloat(trasicoesR[j].valor)
@@ -169,7 +169,7 @@ function despesa() {
             divTransição[i].setAttribute('class', 'trasicaoRealizadasD')
             valorTotalDespesas = valorTotalDespesas + parseFloat(trasicoesD[i].valor)
             console.log(valorTotalDespesas)
-            exibirDispesa.innerText = `R$ ${valorTotalDespesas}`
+            exibirDispesa.innerText = `R$ -${valorTotalDespesas}`
             valorTotalT.innerText = parseFloat(valorTotalExibir) - parseFloat(trasicoesD[i].valor)
             valorTotalExibir = parseFloat(valorTotalExibir) - parseFloat(trasicoesD[i].valor)
 
