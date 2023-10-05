@@ -15,7 +15,9 @@ let divAdicionarReceita = document.getElementById('divAdicionarReceita')
 let exibirDispesa = document.getElementById('exibirDispesa')
 let exibirRceita = document.getElementById('exibirRceita')
 
-
+let inputAdicionarReserva = document.getElementById('inputAdicionarReserva')
+let inputReserva = document.getElementById('inputReserva')
+let valorReserva = document.getElementById('valorReserva')
 
 let inputAdicionarValor = document.getElementById('inputAdicionarValor')
 let valorTotalT = document.getElementById('valorTotalT')
@@ -45,6 +47,7 @@ let valorTotalReceita = 0
 let campoTxtVReceita
 let campoTxtVDespesa
 let valorTotalExibir
+let myTimeout
 divAdicionar.style.display = 'none'
 
 function exibirTelaADDTransicao() {
@@ -54,23 +57,25 @@ function exibirTelaADDTransicao() {
         areaMain.style.display = 'none'
         divAdicionar.style.display = 'flex'
 
-        const myTimeout = setTimeout(function () {
+        myTimeout = setInterval(function () {
 
             if (addTransicaoStatus.value == 'receita') {
+                divAdicionarDespesas.style.display = 'none'
                 divAdicionarReceita.style.display = 'flex'
                 console.log('entrou no settimeout e foi para receita')
-            } else {
+            }else {
+                divAdicionarReceita.style.display = 'none'
                 divAdicionarDespesas.style.display = 'flex'
                 console.log('entrou no settimeout e foi para despesa')
             }
-        }, 3000);
+        }, 500);
     } else {
         alert('adicione um valor inicial na area valor total')
     }
 
 }
 function btnAdicionarTransicaoNova() {
-    
+    clearInterval(myTimeout);
     console.log(addTransicaoStatus.value)
 
     if (addTransicaoStatus.value == 'receita') {
@@ -119,8 +124,8 @@ function receita() {
             console.log(valorTotalReceita)
             exibirRceita.innerText = `R$ ${valorTotalReceita}`
             console.log(valorTotalT.value)
-            valorTotalT.innerText = parseFloat(valorTotalExibir) + parseFloat(valorTotalReceita)
-            valorTotalExibir=parseFloat(valorTotalExibir) + parseFloat(valorTotalReceita)
+            valorTotalT.innerText = parseFloat(valorTotalExibir) + parseFloat(trasicoesR[j].valor)
+            valorTotalExibir = parseFloat(valorTotalExibir) + parseFloat(trasicoesR[j].valor)
 
             spanNome[j].innerHTML = `<span class="testeInput">Nome:</span> ${trasicoesR[j].nome} `
             spanStatus[j].innerHTML = `<span class="testeInput">Status:</span> ${trasicoesR[j].statusT} `
@@ -166,7 +171,7 @@ function despesa() {
             console.log(valorTotalDespesas)
             exibirDispesa.innerText = `R$ ${valorTotalDespesas}`
             valorTotalT.innerText = parseFloat(valorTotalExibir) - parseFloat(trasicoesD[i].valor)
-
+            valorTotalExibir = parseFloat(valorTotalExibir) - parseFloat(trasicoesD[i].valor)
 
 
             spanNome[i].innerHTML = `<span class="testeInput">Nome:</span> ${trasicoesD[i].nome} `
@@ -228,7 +233,9 @@ function adicionarValor(){
 
 }
 function salvarValor(){
-    valorTotalExibir = inputValorTotal.value
+    const regexValorSaldo = /^\d+$/
+    if(regexValorSaldo.test(inputValorTotal.value)){
+        valorTotalExibir = inputValorTotal.value
     valorTotalT.innerText = valorTotalExibir
     
     inputAdicionarValor.style.display = 'none'
@@ -236,4 +243,29 @@ function salvarValor(){
     teste = true
     console.log(valorTotalT)
     console.log(valorTotalExibir)
+    }else{
+        alert('Digite um valor valido no campo. Exemplo: 150')
+    }
+    
+}
+
+
+function adicionarReserva(){
+    inputAdicionarReserva.style.display = 'flex'
+    console.log('entrou dentro da função')
+}
+function salvarValorReserva(){
+    const regexReserva = /^\d+$/
+    if(regexReserva.test(inputReserva.value)){
+        ExibirReserva = inputReserva.value
+    valorReserva.innerText = ExibirReserva
+    
+    inputAdicionarReserva.style.display = 'none'
+    
+    teste = true
+    console.log(valorReserva)
+    console.log(ExibirReserva)
+    }else{
+        alert('Digite um valor valido no campo. Exemplo: 150')
+    }
 }

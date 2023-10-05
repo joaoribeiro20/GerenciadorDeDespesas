@@ -12,7 +12,7 @@
   
     flex-direction: column;
     overflow-y: auto;
-    height: 30vh;
+    height: 45vh;
 }
 .statusTransicao::-webkit-scrollbar {
     width: 12px;               /* width of the entire scrollbar */
@@ -23,16 +23,16 @@
   }
 .trasicaoRealizadasR{
     padding: 2%;
-    background-color: aliceblue;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border: solid rgb(6, 255, 27);
     border-radius: 20px ;
      margin-top: 2vh;
 }
 .trasicaoRealizadasD{
     padding: 2%;
-    background-color: aliceblue;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border: solid rgb(255, 0, 0);
     border-radius: 20px ;
     margin-top: 2vh;
@@ -60,14 +60,23 @@
 
 .inputAdicionarValor{
 display: none;
-flex-direction: column;
 
 }
 .inputValor{
-    width: 40px;
-    height: 10px;
+    margin-top: 10%;
+    width: 50px;
+    border: 0vh;
 }
 
+/* adicionando valor na reserva */
+.inputAdicionarReserva{
+    display: none;
+}
+.inputReserva{
+    margin-top: 10%;
+    width: 50px;
+    border: 0vh;
+}
 /* informaçoes sobre a receita e despesas */
 .divinfoRD{
  

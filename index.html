@@ -73,23 +73,29 @@
         <section id="sessao2" class="sessao2">
 
             <h2>Saldo atual </h2>
-            <span id="valorTotalT">00</span>
+            <p>R$: <span id="valorTotalT">0,00</span></p>
             <button onclick="adicionarValor()" class="btns" id="btnSaldo">Adicionar Saldo</button>
             <br>
-
             <div id="inputAdicionarValor" class="inputAdicionarValor">
                 <br>
                 <input type="text" id="inputValorTotal" class="inputValor">
-                <button onclick="salvarValor()">Salvar</button>
+                <button class="inputValor" onclick="salvarValor()">Salvar</button>
               
             </div>
+
+            <!-- area do fundo de reserva -->
+
             <h2>Fundo de reserva</h2>
-            <p><span>R$: 0,00</span></p>
+            <p>R$: <span id="valorReserva">R$: 0,00</span></p>
+            <button class="btns" id="btnFundo" onclick="adicionarReserva()">adicionar Valor</button><br>
 
-             
-            
-            <button class="btns" id="btnFundo">adicionar Valor</button><br>
+            <div id="inputAdicionarReserva" class="inputAdicionarReserva">
+                <br>
+                <input type="text" id="inputReserva" class="inputValor">
+                <button class="inputValor" onclick="salvarValorReserva()">Salvar</button>
+            </div>
 
+            <!-- textos explicativos sobre receita e  -->
             <div class="divinfoRD">
                 
                 <p><strong>O que é a receita?</strong> A receita é aquele valor extra que obtemos no mês. Portanto, quando adicionamos um valor à receita, esse valor é acrescentado ao valor atual que temos.
@@ -98,6 +104,11 @@
             <div>
                
                 <p><strong>O que é a despesa?</strong> A despesa é tudo aquilo que gastamos no mês. Portanto, o valor dessas despesas vai sendo descontado no valor anual toda vez que é adicionada uma despesa nova.</p>
+            </div>
+
+            <div>
+                <h2>Calcular imposto de renda</h2>
+                <button onclick="alert('função em desenvolvimento......')">Inserir informaçoes para o calculo</button>
             </div>
         </section>
     
